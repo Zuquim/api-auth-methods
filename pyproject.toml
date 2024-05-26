@@ -1,0 +1,22 @@
+[tool.poetry]
+package-mode = false
+name = "api-auth-methods"
+version = "0.1.0"
+description = ""
+license = "GPL-3.0-or-later"
+authors = ["Túlio Zuquim <mtulio@zuquim.dev>"]
+maintainers = ["Túlio Zuquim <mtulio@zuquim.dev>"]
+readme = "README.md"
+repository = "https://github.com/Zuquim/api-auth-methods"
+keywords = ["api", "authentication", "methods", "fastapi", "python"]
+
+[tool.poetry.dependencies]
+fastapi = "^0.111"
+python = ">=3.10 <4.0"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.4"
+flake8 = "^7.0"
+pre-commit = "^3.7"
+pytest = "^8.2"
+pytest-mock = "*"
