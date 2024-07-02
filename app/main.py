@@ -1,6 +1,9 @@
-from fastapi import FastAPI, status
+from typing import Annotated
 
-from schemas.response.health import HealthCheckResponse
+from fastapi import Depends, FastAPI, status
+
+from app.http_basic_auth import authenticate_username_and_password
+from app.schemas.response.health import HealthCheckResponse
 
 app = FastAPI()
 
@@ -13,3 +16,10 @@ async def root():
 @app.get("/health", response_model=HealthCheckResponse, status_code=status.HTTP_200_OK)
 async def health():
     return HealthCheckResponse(message="OK")
+
+
+@app.get("/auth-methods/http-basic-authentication")
+def http_basic_authentication(
+    username: Annotated[str, Depends(authenticate_username_and_password)]
+):
+    return {"username": username}
