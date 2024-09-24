@@ -22,4 +22,4 @@ async def health():
 def http_basic_authentication(
     username: Annotated[str, Depends(authenticate_username_and_password)]
 ):
-    return {"username": username}
+    return {"message": f"Authenticated as {username}"}
