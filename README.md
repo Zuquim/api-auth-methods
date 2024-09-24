@@ -56,3 +56,34 @@ sequenceDiagram
     Server->>Server: 2. Validate API Key
     Server->>Client: 3. Response (200 OK or 401 Unauthorized)
 ```
+
+## JWT Authentication
+
+### Overview
+
+JWT (JSON Web Token) Authentication is a token-based stateless authentication method commonly used in modern APIs.
+Instead of using session IDs or cookies, the client receives a JWT from the server after successfully logging in.
+The client includes this token in every subsequent request, allowing the server to verify the client's identity without needing to keep track of session data.
+
+A JWT is a compact, URL-safe token that contains a set of claims, such as user identity and expiration time.
+It is signed by the server using a secret key, allowing the server to validate the token's authenticity.
+
+### Example Flow
+
+1. **Client Login**: The client sends a request with credentials (e.g., username and password) to a `/token` endpoint.
+2. **Server Response**: If the credentials are correct, the server generates a JWT and sends it back to the client.
+3. **Client Request**: The client includes the JWT in the Authorization header (in the format `Bearer <token>`) in subsequent requests.
+4. **Server Verification**: The server verifies the token’s signature, extracts the claims, and processes the request based on the token’s validity.
+5. **Access Granted/Denied**: If the the validation is successful, access is granted. Otherwise, the server responds with an error.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: 1. Send credentials to /token
+    Server->>Client: 2. Respond with JWT
+    Client->>Server: 3. Send request with JWT (Authorization: Bearer <token>)
+    Server->>Server: 4. Verify JWT
+    Server->>Client: 5. Response (200 OK or 401 Unauthorized)
+```
