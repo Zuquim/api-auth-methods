@@ -2,6 +2,7 @@ from typing import Annotated
 
 from fastapi import Depends, FastAPI, status
 
+from app.api_key_auth import authenticate_api_key
 from app.http_basic_auth import authenticate_username_and_password
 from app.schemas.response.health import HealthCheckResponse
 
@@ -33,3 +34,16 @@ def http_basic_authentication(
         dict: A message indicating the authenticated username.
     """
     return {"message": f"Authenticated as {username}"}
+
+
+@app.get("/auth-methods/api-key-authentication")
+def api_key_authentication(api_key: Annotated[bool, Depends(authenticate_api_key)]):
+    """API Key Authentication method endpoint.
+
+    Args:
+        api_key (bool): Whether the API key is valid or not.
+
+    Returns:
+        dict: A message indicating the authentication status.
+    """
+    return {"message": "API Key authenticated"}
