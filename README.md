@@ -29,3 +29,26 @@ sequenceDiagram
     Client->>Server: 1. Request with Authorization header (Basic <base64(username:password)>)
     Server->>Server: 2. Decode and verify credentials
     Server->>Client: 3. Response (200 OK or 401 Unauthorized)
+```
+
+## API Key Authentication
+
+### Overview
+
+API Key Authentication requires the client to send an API Key via a custom header.
+
+### Example Flow
+
+Client Request: The client sends a request with the header `X-API-Key: <api_key>`.
+Server Verification: The server checks if the API Key is valid.
+Access Granted/Denied: Based on verification, access is granted or denied.
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Client->>Server: 1. Request with API Key in header
+    Server->>Server: 2. Validate API Key
+    Server->>Client: 3. Response (200 OK or 401 Unauthorized)
+```
