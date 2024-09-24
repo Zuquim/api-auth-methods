@@ -35,13 +35,17 @@ sequenceDiagram
 
 ### Overview
 
-API Key Authentication requires the client to send an API Key via a custom header.
+API Key Authentication is a simple method where a client includes a unique key in the request headers.
+This key is often assigned during account creation or API registration and is used by the server to identify and authenticate the client.
+Unlike username and password combinations, API keys are typically used for authenticating machines and services.
+
+API keys should be kept confidential, as anyone with the key can access the API as the authenticated user.
 
 ### Example Flow
 
-Client Request: The client sends a request with the header `X-API-Key: <api_key>`.
-Server Verification: The server checks if the API Key is valid.
-Access Granted/Denied: Based on verification, access is granted or denied.
+1. **Client Request**: The client sends a request with the header `X-API-Key: <api_key>`.
+2. **Server Verification**: The server validates the provided API key by comparing it to the expected key.
+3. **Access Granted/Denied**: If the API key matches, access is granted. Otherwise, the server responds with an error.
 
 ```mermaid
 sequenceDiagram
