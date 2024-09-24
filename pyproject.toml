@@ -2,7 +2,7 @@
 package-mode = false
 name = "api-auth-methods"
 version = "0.1.0"
-description = ""
+description = "Personal study project about common API authentication methods."
 license = "GPL-3.0-or-later"
 authors = ["Túlio Zuquim <mtulio@zuquim.dev>"]
 maintainers = ["Túlio Zuquim <mtulio@zuquim.dev>"]
