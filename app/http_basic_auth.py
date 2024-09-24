@@ -10,6 +10,17 @@ security = HTTPBasic()
 def authenticate_username_and_password(
     credentials: Annotated[HTTPBasicCredentials, Depends(security)],
 ) -> dict[str, str]:
+    """ "Basic HTTP Authentication method function.
+
+    Args:
+        credentials (HTTPBasicCredentials): HTTP Basic Authentication credentials.
+
+    Returns:
+        str: The authenticated username.
+
+    Raises:
+        HTTPException: If the provided credentials are invalid.
+    """
     # Validate username
     current_username_bytes = credentials.username.encode("utf8")
     correct_username_bytes = b"myself"
