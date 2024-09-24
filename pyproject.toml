@@ -12,6 +12,7 @@ keywords = ["api", "authentication", "methods", "fastapi", "python"]
 
 [tool.poetry.dependencies]
 fastapi = "^0.111"
+pyjwt = "^2.9.0"
 python = ">=3.10 <4.0"
 
 [tool.poetry.group.dev.dependencies]
